@@ -19,6 +19,29 @@ export async function dailyDietRoutes(app: FastifyInstance) {
     return userStatistics(diets)
   })
 
+  app.get('/all', { preHandler: [checkSessionIdExists] }, async (request) => {
+    const { sessionId } = request.cookies
+
+    const user = await knex('users')
+      .where({ session_id: sessionId })
+      .first()
+      .select()
+
+    const diets = await knex('diets').where({ user_id: user?.id }).select()
+
+    return { diets }
+  })
+
+  app.get('/:id', { preHandler: [checkSessionIdExists] }, async (request) => {
+    const idSchema = z.object({ id: z.string() })
+
+    const { id } = idSchema.parse(request.params)
+
+    const diet = await knex('diets').where('id', id).first().select()
+
+    return { diet }
+  })
+
   app.post('/create-user', async (request, reply) => {
     const newUserSchema = z.object({
       name: z.string(),
@@ -86,26 +109,61 @@ export async function dailyDietRoutes(app: FastifyInstance) {
     },
   )
 
-  app.get('/all', { preHandler: [checkSessionIdExists] }, async (request) => {
-    const { sessionId } = request.cookies
+  app.put(
+    '/:id',
+    { preHandler: [checkSessionIdExists] },
+    async (request, reply) => {
+      const { sessionId } = request.cookies
 
-    const user = await knex('users')
-      .where({ session_id: sessionId })
-      .first()
-      .select()
+      const idSchema = z.object({ id: z.string() })
 
-    const diets = await knex('diets').where({ user_id: user?.id }).select()
+      const updatedDietInfoSchema = z.object({
+        name: z.string(),
+        description: z.string(),
+        completed: z.boolean(),
+        dayAndHour: z.coerce.date(),
+        active: z.coerce.boolean(),
+      })
 
-    return { diets }
-  })
+      const { id } = idSchema.parse(request.params)
 
-  app.get('/:id', { preHandler: [checkSessionIdExists] }, async (request) => {
-    const idSchema = z.object({ id: z.string() })
+      const { name, description, completed, dayAndHour, active } =
+        updatedDietInfoSchema.parse(request.body)
 
-    const { id } = idSchema.parse(request.params)
+      const user = await knex('users')
+        .where({ session_id: sessionId })
+        .first()
+        .select()
 
-    const diet = await knex('diets').where('id', id).first().select()
+      await knex('diets').where({ user_id: user?.id, id }).update({
+        name,
+        description,
+        completed,
+        day_hour: dayAndHour.toString(),
+        active,
+      })
 
-    return { diet }
-  })
+      reply.status(200).send({ message: 'Diet updated successfully!' })
+    },
+  )
+
+  app.delete(
+    '/:id',
+    { preHandler: [checkSessionIdExists] },
+    async (request, reply) => {
+      const { sessionId } = request.cookies
+
+      const idSchema = z.object({ id: z.string() })
+      const { id } = idSchema.parse(request.params)
+
+      const user = await knex('users')
+        .where({ session_id: sessionId })
+        .first()
+        .select()
+
+      await knex('diets').where({ id, user_id: user?.id }).del()
+
+      reply.status(200).send({ message: 'Diet deleted successfully!' })
+    },
+  )
 }
