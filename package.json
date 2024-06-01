@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "tsx watch ./src/server.ts",
     "lint": "eslint --fix .",
-    "knex": "node --import tsx ./node_modules/knex/bin/cli"
+    "knex": "node --import tsx ./node_modules/knex/bin/cli",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",

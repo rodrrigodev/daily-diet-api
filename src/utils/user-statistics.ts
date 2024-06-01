@@ -34,6 +34,6 @@ export function userStatistics(diets: UserStatistics[]) {
     activeDiets,
     notActiveDiets,
     actualStreak,
-    dietsCompleted: dietsCompleted.toFixed(2),
+    dietsCompleted: dietsCompleted ? dietsCompleted.toFixed(2) : 0,
   }
 }
