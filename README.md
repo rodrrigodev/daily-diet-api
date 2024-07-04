@@ -1,60 +1,57 @@
 # API Daily Diet
 
-A API Daily Diet é projetada para gerenciamento de dietas diárias, permitindo que os usuários:
+The API Daily Diet is designed for daily diet management, allowing users to:
 
-- Criem e identifiquem contas.
-- Registrem refeições com detalhes como nome, descrição, data, hora e status da dieta.
-- Editem e excluam refeições.
-- Visualizem todas as refeições de um usuário ou uma refeição específica.
-- Obtenham métricas, como total de refeições, refeições dentro e fora da dieta, e a melhor sequência de dieta.
-- Acesso a visualização, edição e exclusão de refeições é restrito a cada usuário individualmente, garantindo a privacidade dos dados.
+- Create and identify accounts.
+- Record meals with details such as name, description, date, time, and diet status.
+- Edit and delete meals.
+- View all meals of a user or a specific meal.
+- Obtain metrics such as total meals, meals within and outside the diet, and the best diet sequence.
+- Access to view, edit, and delete meals is restricted to each individual user, ensuring data privacy.
 
+## How to Download and Use
 
-## Como baixar e usar
+### Step 1: Clone the GitHub Repository
 
-- Passo 1: Clone o repositório do GitHub
-Copie a URL: https://github.com/rodrrigodev/daily-diet-api.git
+Copy the URL: `https://github.com/rodrrigodev/daily-diet-api.git`
 
-Abra seu terminal (ou prompt de comando) e navegue até o diretório onde deseja colocar o projeto clonado
+Open your terminal (or command prompt) and navigate to the directory where you want to place the cloned project.
 
-Em seguida, execute o seguinte comando, substituindo <URL> pela URL que você copiou
+Then, execute the following command, replacing `<URL>` with the copied URL:
+
+```bash
 git clone <URL>
+```
 
-Após clonar, navegue para o diretório do projeto usando o comando cd
+After cloning, navigate to the project directory using the cd command:
+```bash
 cd daily-diet-api
+```
+### Step 2: Installing Dependencies
+Execute the command to install dependencies:
 
-- Passo 2: Instalando as dependências
-Execute o comando para instalar as dependências
-npm install or npm i
+```bash
+npm install
+```
+or
+```bash
+npm i
+```
+### Step 3: Running the API
+In the terminal, execute the command npm run dev. This will start the server as configured in the dev script.
+The server will be started at http://localhost:3000.
 
-Passo 3: Executando a API
-No terminal, execute o comando npm run dev
-Isso iniciará o servidor conforme configurado no script dev.
-O servidor será iniciado no endereço http://localhost:3000
+Note: Make sure your development environment has Node.js installed.
 
-* Atenção: certifique-se de que seu ambiente de desenvolvimento tenha o Node.js instalado.
+#### Useful Tools
+To use the API endpoints after starting the server locally (as explained above), you will need a tool that allows you to send HTTP requests to test and interact with these endpoints. Two of the most popular tools for this purpose are Postman and Insomnia.
 
-### Ferramentas úteis
-Para usar os endpoints da API após iniciar o servidor localmente (como explicado anteriormente), você vai precisar de uma ferramenta que permita enviar solicitações HTTP para testar e interagir com esses endpoints. Duas das ferramentas mais populares para isso são o Postman e o Insomnia.
-
-### Endpoints
-- Obter métricas de um usuário
-http://localhost:3333/diet/user
-
-- Obter informações de refeições
-http://localhost:3333/diet/all
-
-- Obter informações de uma única dieta
-http://localhost:3333/diet/id
-
-- Criar um usuário
-http://localhost:3333/diet/create-user
-
-- Criar uma dieta
-http://localhost:3333/diet/new
-
-- Atualizar uma dieta
-http://localhost:3333/diet/id
-
-- Deletar uma dieta
-http://localhost:3333/diet/id
+Endpoints
+Get user metrics: `http://localhost:3333/diet/user`
+Get meal information: `http://localhost:3333/diet/all`
+Get information of a single diet: `http://localhost:3333/diet/id`
+Create a user: `http://localhost:3333/diet/create-user`
+Create a diet: `http://localhost:3333/diet/new`
+Update a diet: `http://localhost:3333/diet/id`
+Delete a diet: `http://localhost:3333/diet/id`
+These endpoints allow you to interact with the API for managing daily diets effectively.
