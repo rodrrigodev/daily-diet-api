@@ -39,19 +39,20 @@ npm i
 ```
 ### Step 3: Running the API
 In the terminal, execute the command npm run dev. This will start the server as configured in the dev script.
-The server will be started at http://localhost:3000.
+The server will be started at `http://localhost:3000`.
 
 Note: Make sure your development environment has Node.js installed.
 
 #### Useful Tools
 To use the API endpoints after starting the server locally (as explained above), you will need a tool that allows you to send HTTP requests to test and interact with these endpoints. Two of the most popular tools for this purpose are Postman and Insomnia.
 
-Endpoints
-Get user metrics: `http://localhost:3333/diet/user`
-Get meal information: `http://localhost:3333/diet/all`
-Get information of a single diet: `http://localhost:3333/diet/id`
-Create a user: `http://localhost:3333/diet/create-user`
-Create a diet: `http://localhost:3333/diet/new`
-Update a diet: `http://localhost:3333/diet/id`
-Delete a diet: `http://localhost:3333/diet/id`
+Endpoints:
+- Get user metrics: `http://localhost:3333/diet/user`
+- Get meal information: `http://localhost:3333/diet/all`
+- Get information of a single diet: `http://localhost:3333/diet/id`
+- Create a user: `http://localhost:3333/diet/create-user`
+- Create a diet: `http://localhost:3333/diet/new`
+- Update a diet: `http://localhost:3333/diet/id`
+- Delete a diet: `http://localhost:3333/diet/id`
+<br/>
 These endpoints allow you to interact with the API for managing daily diets effectively.
