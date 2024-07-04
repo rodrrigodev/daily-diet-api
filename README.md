@@ -56,3 +56,9 @@ Endpoints:
 - Delete a diet: `http://localhost:3333/diet/id`
 <br/>
 These endpoints allow you to interact with the API for managing daily diets effectively.
+
+
+### Some imagens:
+<img src="src/assets/dailyDiet-1.png">
+<img src="src/assets/dailyDiet-2.png">
+<img src="src/assets/dailyDiet-3.png">
